@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-//™7/31 •œŒ³‚µ‚½
 public class SceneTitle : MonoBehaviour
 {
     #region ƒqƒGƒ‰ƒ‹ƒL[İ’è
