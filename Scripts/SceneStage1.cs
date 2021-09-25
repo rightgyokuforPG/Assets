@@ -1,76 +1,18 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SceneStage1 : MonoBehaviour
 {
-    #region//ƒCƒ“ƒXƒyƒNƒ^[‚Åİ’è‚·‚é
-    [Header("HP"), SerializeField] public Text statusHP;
-    [Header("ATK")] public Text statusATK;
-    [Header("DEF")] public Text statusDEF;
-    [Header("MONEY")] public Text statusMONEY;
-
-    //[Header("‰‚ß‚©‚ç‚©‚Ç‚¤‚©")] public bool isStart = false;
-    #endregion
-
-
-
-    void Awake()
-    {
-    }
-
+    // Start is called before the first frame update
     void Start()
     {
-        //SceneTitle‚©‚çƒV[ƒ“‘JˆÚ‚·‚éÛASaveManager“à‚Ìsave‚Éã‘‚«‚µ‚Ä‚¢‚é‚Ì‚Å
-        //–{“–‚Éæ“¾o—ˆ‚Ä‚¢‚é‚©Šm”F‚·‚éƒR[ƒh
-        //GameObject obj = GameObject.FindWithTag("GameManager");
-        //SaveData save = obj.GetComponent<SaveManager>().GetSave();
-
-        //if (save.itemFlagList[0].ItemID == 1)
-        //{
-        //    Debug.Log("ƒf[ƒ^‘JˆÚ_Šm”FOK");
-        //    GameObject.Find("Item").SetActive(false);
-        //}
-        //Q:ƒV[ƒ“ŠÔ‚Åƒf[ƒ^ˆÚ‚¹‚Ä‚é‚ÌH
-        //A:Stage1‘¤‚ÌAwake‚Åsave‚ğ¶¬‚µATitle‘¤‚ÌGameSceneLoaded‚Åsave‚Éã‘‚«‚µ‚Ä‚¢‚é‚©‚ço—ˆ‚Ä‚é
-
-        //š—Õ title‚Å‰‚ß‚©‚ç‚ğ‘I‘ğ‚µ‚Ä‚¢‚½ê‡AƒXƒe[ƒ^ƒX‚ğ’¼“ü—Í‚·‚é
-        //if(isStart)
-        //{
-        //    Debug.Log("SceneStage1‚ÅisStart‚ªtrue‚Å‚µ‚½");
-        //    GameObject.FindWithTag("GameManager").GetComponent<SaveManager>().save.playerStatus.HP = 100;
-        //    GameObject.FindWithTag("GameManager").GetComponent<SaveManager>().save.playerStatus.ATK = 10;
-        //    GameObject.FindWithTag("GameManager").GetComponent<SaveManager>().save.playerStatus.HP = 5;
-        //    GameObject.FindWithTag("GameManager").GetComponent<SaveManager>().save.playerStatus.HP = 0;
-        //    isStart = false;
-        //}
-
-        //š¶‚ÌƒXƒe[ƒ^ƒX‚É’l‚ğİ’è‚·‚é
-        Reload();
+        //ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰ã‚­ãƒ£ãƒ©ã®æƒ…å ±ã‚’å–å¾—ã™ã‚‹
     }
 
+    // Update is called once per frame
     void Update()
     {
-
-    }
-
-    /// <summary>
-    /// ƒXƒe[ƒ^ƒX‚ğÄ•\¦‚·‚é
-    /// </summary>
-    public void Reload()
-    {
-        Debug.Log("Reload‚É“ü‚Á‚½");
-        statusHP.text = GameObject.FindWithTag("GameManager")
-            .GetComponent<SaveManager>().save.playerStatus.HP.ToString();
-
-        statusATK.text = GameObject.FindWithTag("GameManager")
-            .GetComponent<SaveManager>().save.playerStatus.ATK.ToString();
-
-        statusDEF.text = GameObject.FindWithTag("GameManager")
-            .GetComponent<SaveManager>().save.playerStatus.DEF.ToString();
-
-        statusMONEY.text = GameObject.FindWithTag("GameManager")
-            .GetComponent<SaveManager>().save.playerStatus.MONEY.ToString();
+        
     }
 }
