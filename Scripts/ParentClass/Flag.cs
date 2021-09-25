@@ -16,6 +16,8 @@ using UnityEngine;
 /// 
 /// 
 /// ☆EnemyとItemで種類分けしないならわざわざ継承させる必要なくない？
+/// 
+///  2021/09/25 追記 ↑何言ってるのか不明
 /// </summary>
 [System.Serializable]
 public class Flag
@@ -51,3 +53,8 @@ public class Flag
         this.type = type;
     }
 }
+
+//Flag.csは、ただのクラス設計図
+//インスタンス生成時にTypeによって変数の型を変更したい
+//※おそらく、データget,set時にどの変数に格納するかをtypeで分ければ行けるはず
+//2021/09/25 追記 ↑何言ってるのか不明

@@ -48,3 +48,15 @@ public class Item
     //★いずれ、各変数のGetter,Setter作る
 
 }
+
+
+
+//★WeaponListEntity 武器の種類を管理する奴
+//★PlayerListEntity プレイヤーが所持している物を管理する奴
+//★EnemyListEntity  敵の情報を管理する奴（なんか種類を管理するだけでいる/いない管理出来なさそう）
+//★FlagListEntity   シナリオ進行フラグやお邪魔NPCの出現フラグを管理する奴
+
+//★EnemyExistFlagListEntity 敵の倒したかどうかを管理する奴
+//  {どのステージか どの種類か どのIDか}
+
+//2021/09/25 追記 ↑何言ってるのか不明
