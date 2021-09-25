@@ -1666,9 +1666,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1688951391}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a50adb47b8098e74ea7ed4461ebf70b0, type: 3}
+  m_Script: {fileID: 11500000, guid: fa93e28829085b44faf796c031ab63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  save:
+    text: "\u304A\u306F\u3088\u3046"
+    playerStatus:
+      StatusID: 0
+      HP: 0
+      ATK: 0
+      DEF: 0
+      MONEY: 0
+      Name: "\u306A\u307E\u3048"
+    inventory:
+      itemList: []
+    itemFlagList: []
 --- !u!1 &1762350148
 GameObject:
   m_ObjectHideFlags: 0
