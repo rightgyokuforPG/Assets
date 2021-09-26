@@ -2590,6 +2590,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3334231955322235764, guid: 5b61770d52b39e341b8ada21104428c4, type: 3}
   m_PrefabInstance: {fileID: 1091952524}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1237880954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8908778670395949117, guid: cb726b55296633d4ca71f928851e8d8a, type: 3}
+  m_PrefabInstance: {fileID: 9065096637142992969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1302466575
 GameObject:
   m_ObjectHideFlags: 0
@@ -3143,9 +3148,9 @@ GameObject:
   - component: {fileID: 1622915678}
   - component: {fileID: 1622915677}
   - component: {fileID: 1622915676}
-  - component: {fileID: 1622915675}
   - component: {fileID: 1622915679}
   - component: {fileID: 1622915680}
+  - component: {fileID: 1622915675}
   m_Layer: 0
   m_Name: player_down_stand
   m_TagString: Player
@@ -3162,17 +3167,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1622915674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7509df0df9c854eb42cd51cc04a022, type: 3}
+  m_Script: {fileID: 11500000, guid: b296cec4f3d421743bc8f208b35c4ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  battleView: {fileID: 463843974729697396}
-  pHP: 100
-  pATK: 10
-  pDEF: 5
-  eHP: 50
-  eATK: 10
-  eDEF: 2
+  battleView: {fileID: 1237880954}
+  pHP: 0
+  pATK: 0
+  pDEF: 0
+  eHP: 0
+  eATK: 0
+  eDEF: 0
 --- !u!95 &1622915676
 Animator:
   serializedVersion: 3
@@ -7468,11 +7473,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &463843974729697396 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8908778670395949117, guid: cb726b55296633d4ca71f928851e8d8a, type: 3}
-  m_PrefabInstance: {fileID: 9065096637142992969}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &463843974729697403 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8908778670395949106, guid: cb726b55296633d4ca71f928851e8d8a, type: 3}
