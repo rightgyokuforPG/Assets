@@ -142,8 +142,8 @@ public class SceneTitle : MonoBehaviour
         }
 
         //シーン遷移する
-        SceneManager.LoadScene("stage1 (1)");
-        //2021/09/26 追記 シーンマージの為、変更 ->(1)
+        SceneManager.LoadScene("Stage1 (2)");
+        //2021/09/27 追記 シーン書き換えの為、変更 ->Stage1 (2)
     }
     public void SetCanvas()
     {
