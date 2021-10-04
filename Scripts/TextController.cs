@@ -14,16 +14,17 @@ public class TextController : MonoBehaviour
     public bool firstPush = false;
 
     //☆　後で別CSファイルに移動する
-    class Scenario
-    {
-        public string ScenarioID;
-        public List<string> Texts;
-        public List<string> Options;
-        public string NextScenarioID;
-    }
+    //class Scenario
+    //{
+    //    public string ScenarioID;
+    //    public List<string> Texts;
+    //    public List<string> Options;
+    //    public string NextScenarioID;
+    //}
 
     void Start()
     {
+       
         var scenario01 = new Scenario()
         {
             ScenarioID = "scenario01",
@@ -34,6 +35,20 @@ public class TextController : MonoBehaviour
                 "テスト文章３",
                 "テスト文章４",
                 "テスト文章５"
+            },
+            NextScenarioID = "scenario02"
+        };
+
+        var scenario02 = new Scenario()
+        {
+            ScenarioID = "scenario02",
+            Texts = new List<string>()
+            {
+                "テスト文章６",
+                "テスト文章７",
+                "テスト文章８",
+                "テスト文章９",
+                "テスト文章１０"
             }
         };
 
