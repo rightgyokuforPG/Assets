@@ -1,43 +1,46 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonPlayer : MonoBehaviour
+public class Player2: MonoBehaviour
 {
-    #region//ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã§è¨­å®šã™ã‚‹
-    [Header("ç§»å‹•é€Ÿåº¦")] public float speed;
-    [Header("ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ç”»é¢ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ")] public GameObject battleView;
-    //â˜… ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã§ç®¡ç†ã™ã‚‹
-    [Header("è‡ªHP")] public int pHP;
-    [Header("è‡ªATK")] public int pATK;
-    [Header("è‡ªDEF")] public int pDEF;
-    // â˜… ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰æ•µã®ç¨®é¡ã‚’å–å¾—ã—ã¦è¡¨ç¤ºã™ã‚‹
-    [Header("æ•µHP")] public int eHP;
-    [Header("æ•µATK")] public int eATK;
-    [Header("æ•µDEF")] public int eDEF;
+    #region//ƒCƒ“ƒXƒyƒNƒ^[‚Åİ’è‚·‚é
+    [Header("ˆÚ“®‘¬“x")] public float speed;
+    [Header("ƒXƒe[ƒ^ƒX‰æ–ÊƒIƒuƒWƒFƒNƒg")] public GameObject battleView;
+    //š ƒf[ƒ^ƒx[ƒX‚ÅŠÇ—‚·‚é
+    [Header("©HP")] public int pHP;
+    [Header("©ATK")] public int pATK;
+    [Header("©DEF")] public int pDEF;
+    // š ƒf[ƒ^ƒx[ƒX‚©‚ç“G‚Ìí—Ş‚ğæ“¾‚µ‚Ä•\¦‚·‚é
+    [Header("“GHP")] public int eHP;
+    [Header("“GATK")] public int eATK;
+    [Header("“GDEF")] public int eDEF;
     #endregion
 
-    #region//ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆå¤‰æ•°
-    private Animator anim = null;           //Animatorå¤‰æ•°ã‚’å®£è¨€
+    #region//ƒvƒ‰ƒCƒx[ƒg•Ï”
+    private Animator anim = null;           //Animator•Ï”‚ğéŒ¾
     private Rigidbody2D rb = null;
 
-    private bool isSide = false;            //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®šç”¨ãƒ•ãƒ©ã‚°
+    private bool isSide = false;            //ƒAƒjƒ[ƒVƒ‡ƒ“İ’è—pƒtƒ‰ƒO
     private bool isUp = false;
     private bool isDown = false;
     private bool isWalk = false;
-    private string enemyTag = "Enemy";         //æ¥æ•µåˆ¤å®šã‚¿ã‚°
-    private bool isStatus = false;             //ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹ãƒ•ãƒ©ã‚°
+    private string enemyTag = "Enemy";         //Ú“G”»’èƒ^ƒO
+    private bool isStatus = false;             //ƒXƒe[ƒ^ƒX‚ğ•\¦‚·‚é‚©‚Ç‚¤‚©ƒtƒ‰ƒO
 
-    //â˜… åˆ¥ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã§ç®¡ç†ã™ã¹ã
-    private bool isSubmit = false;          //æ±ºå®šãƒœã‚¿ãƒ³æŠ¼ä¸‹ä¸­ãƒ•ãƒ©ã‚°
-    private bool isCancel = false;          //ã‚­ãƒ£ãƒ³ã‚»ãƒ«ãƒœã‚¿ãƒ³æŠ¼ä¸‹ä¸­ãƒ•ãƒ©ã‚°
-    private bool isPunching = false;        //ãƒãƒˆãƒ«ä¸­ãƒ•ãƒ©ã‚°
-    private cData Player;                   //ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æ ¼ç´
+    //š •Ê‚ÌƒXƒNƒŠƒvƒg‚ÅŠÇ—‚·‚×‚«
+    private bool isSubmit = false;          //Œˆ’èƒ{ƒ^ƒ“‰Ÿ‰º’†ƒtƒ‰ƒO
+    private bool isCancel = false;          //ƒLƒƒƒ“ƒZƒ‹ƒ{ƒ^ƒ“‰Ÿ‰º’†ƒtƒ‰ƒO
+    private bool isPunching = false;        //ƒoƒgƒ‹’†ƒtƒ‰ƒO
+    private cData Player;                   //ƒXƒe[ƒ^ƒXŠi”[
     private cData Enemy;
 
     private GameObject PlayerStatus;
     private GameObject EnemyStatus;
+    //2021/09/26 ’Ç‹L
+    //š ButtomPlayer ‚Æ Player‚ğƒ}[ƒW
+    private string itemTag = "Item";    //ƒAƒCƒeƒ€‚ÆÚG‚µ‚½‚ÉƒAƒCƒeƒ€‚ğ‰ñû‚·‚é—p
     #endregion
 
     public class cData
@@ -49,10 +52,10 @@ public class ButtonPlayer : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();    //Animatorã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã€å¾Œã§ã‚¢ã‚¿ãƒƒãƒ
+        anim = GetComponent<Animator>();    //AnimatorƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬AŒã‚ÅƒAƒ^ƒbƒ`
         rb = GetComponent<Rigidbody2D>();
 
-        //â˜… å¾Œã§ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’å–å¾—ã™ã‚‹è¨˜è¿°
+        //š Œã‚ÅƒXƒe[ƒ^ƒX‚ğæ“¾‚·‚é‹Lq
         Player = new cData() { sHP = this.pHP, sATK = this.pATK, sDEF = this.pDEF };
         Enemy = new cData() { sHP = this.eHP, sATK = this.eATK, sDEF = this.eDEF };
 
@@ -62,20 +65,20 @@ public class ButtonPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        //å„ç¨®åº§æ¨™è»¸ã®é€Ÿåº¦ã‚’æ±‚ã‚ã‚‹
+        //ŠeíÀ•W²‚Ì‘¬“x‚ğ‹‚ß‚é
         float xSpeed = GetXSpeed();
         float ySpeed = GetYSpeed();
 
-        //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’é©ç”¨
+        //ƒAƒjƒ[ƒVƒ‡ƒ“‚ğ“K—p
         SetAnimation();
 
-        //ç§»å‹•é€Ÿåº¦ã‚’è¨­å®š
+        //ˆÚ“®‘¬“x‚ğİ’è
         rb.velocity = new Vector2(xSpeed, ySpeed);
 
-        //ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹è¡¨ç¤ºè¨­å®š
-        if(isStatus == true)
+        //ƒXƒe[ƒ^ƒX•\¦İ’è
+        if (isStatus == true)
         {
-            //ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’enabledã«ã™ã‚‹
+            //ƒXƒe[ƒ^ƒX‚ÌƒIƒuƒWƒFƒNƒg‚ğenabled‚É‚·‚é
             battleView.SetActive(true);
             Battle();
         }
@@ -86,22 +89,22 @@ public class ButtonPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Xæˆåˆ†ã§å¿…è¦ãªè¨ˆç®—ã‚’ã—ã€é€Ÿåº¦ã‚’è¿”ã™ã€‚
+    /// X¬•ª‚Å•K—v‚ÈŒvZ‚ğ‚µA‘¬“x‚ğ•Ô‚·B
     /// </summary>
-    /// <returns>Xè»¸ã®é€Ÿã•</returns>
+    /// <returns>X²‚Ì‘¬‚³</returns>
     private float GetXSpeed()
     {
 
         float horizontalKey = Input.GetAxis("Horizontal");
         float xSpeed = 0.0f;
 
-        if (horizontalKey > 0)       //å³æ–¹å‘
+        if (horizontalKey > 0)       //‰E•ûŒü
         {
             transform.localScale = new Vector3(1, 1, 1);
             isSide = true;
             xSpeed = speed;
         }
-        else if (horizontalKey < 0)  //å·¦æ–¹å‘
+        else if (horizontalKey < 0)  //¶•ûŒü
         {
             transform.localScale = new Vector3(-1, 1, 1);
             isSide = true;
@@ -117,22 +120,22 @@ public class ButtonPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Yæˆåˆ†ã§å¿…è¦ãªè¨ˆç®—ã‚’ã—ã€é€Ÿåº¦ã‚’è¿”ã™ã€‚
+    /// Y¬•ª‚Å•K—v‚ÈŒvZ‚ğ‚µA‘¬“x‚ğ•Ô‚·B
     /// </summary>
-    /// <returns>Yè»¸ã®é€Ÿã•</returns>
+    /// <returns>Y²‚Ì‘¬‚³</returns>
     private float GetYSpeed()
     {
 
         float verticalKey = Input.GetAxis("Vertical");
         float ySpeed = 0.0f;
 
-        if (verticalKey > 0)        //ä¸Šæ–¹å‘
+        if (verticalKey > 0)        //ã•ûŒü
         {
             isUp = true;
             isDown = false;
             ySpeed = speed;
         }
-        else if (verticalKey < 0)   //ä¸‹æ–¹å‘
+        else if (verticalKey < 0)   //‰º•ûŒü
         {
             isUp = false;
             isDown = true;
@@ -150,7 +153,7 @@ public class ButtonPlayer : MonoBehaviour
 
 
     /// <summary>
-    /// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹
+    /// ƒAƒjƒ[ƒVƒ‡ƒ“‚ğİ’è‚·‚é
     /// </summary>
     private void SetAnimation()
     {
@@ -158,28 +161,55 @@ public class ButtonPlayer : MonoBehaviour
 
         float verticalKey = Input.GetAxis("Vertical");
 
-        if ((horizontalKey != 0) || (verticalKey != 0))    //ç§»å‹•ä¸­ã®å‡¦ç†
+        if ((horizontalKey != 0) || (verticalKey != 0))    //ˆÚ“®’†‚Ìˆ—
         {
             isWalk = true;
         }
-        else                                                //åœæ­¢ä¸­ã®å‡¦ç†
+        else                                                //’â~’†‚Ìˆ—
         {
             isWalk = false;
         }
-        
+
         anim.SetBool("side", isSide);
         anim.SetBool("up", isUp);
         anim.SetBool("down", isDown);
         anim.SetBool("walk", isWalk);
     }
 
-    #region//æ¥è§¦åˆ¤å®š
+    #region//ÚG”»’è
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == enemyTag)
         {
-            //Debug.Log("æ•µã¨æ¥è§¦ã—ãŸï¼");
+            //Debug.Log("“G‚ÆÚG‚µ‚½I");
             isStatus = true;
+        }
+        //2021/09/26 ’Ç‹L
+        //š ButtomPlayer ‚Æ Player‚ğƒ}[ƒW
+        if (collision.collider.tag == itemTag)
+        {
+            Debug.Log("ƒAƒCƒeƒ€‚ÆÚG‚µ‚½I");
+            //‚±‚±‚ÅASaveData‚É
+
+            //šƒAƒCƒeƒ€‚ªÁ‚¦‚é‚Æ‚¢‚¤“®ì‚ÍƒAƒCƒeƒ€©g‚É‚â‚Á‚Ä‚à‚ç‚¤
+            ObjectCollision o = collision.gameObject.GetComponent<ObjectCollision>();
+
+            if (o != null)
+            {
+                //š—Õ
+                //saveData‚É’¼Ú‹L“ü‚·‚é
+                GameObject.FindWithTag("GameManager").GetComponent<SaveManager>().save.playerStatus.HP += 100;
+
+                //ƒAƒCƒeƒ€íœw¦
+                o.playerTouchOn = true;
+
+                //
+                GameObject.FindWithTag("GameManager").GetComponent<SceneStage1>().Reload();
+            }
+            else
+            {
+                Debug.Log("ƒAƒCƒeƒ€‚ÉG‚ê‚Ä‚é‚¯‚ÇAObjectCollision‚ª‘¶İ‚µ‚È‚¢");
+            }
         }
 
     }
@@ -187,7 +217,7 @@ public class ButtonPlayer : MonoBehaviour
     {
         if (collision.collider.tag == enemyTag)
         {
-            //Debug.Log("æ•µã¨æ¥è§¦ä¸­ï¼");
+            //Debug.Log("“G‚ÆÚG’†I");
             isStatus = true;
         }
     }
@@ -196,61 +226,61 @@ public class ButtonPlayer : MonoBehaviour
     {
         if (collision.collider.tag == enemyTag)
         {
-            //Debug.Log("æ•µã‹ã‚‰é›¢ã‚ŒãŸï¼");
+            //Debug.Log("“G‚©‚ç—£‚ê‚½I");
             isStatus = false;
         }
     }
     #endregion
 
     ///<summary> 
-    ///ãƒãƒˆãƒ«å‡¦ç†
+    ///ƒoƒgƒ‹ˆ—
     ///</summary>
     private void Battle()
     {
         UpdateStatus();
-        //Debug.Log("Zãƒœã‚¿ãƒ³ã§ãƒãƒˆãƒ«é–‹å§‹ï¼");
+        //Debug.Log("Zƒ{ƒ^ƒ“‚Åƒoƒgƒ‹ŠJnI");
 
         if (isPunching == true)
         {
-            //ã“ã“ã«å…¥åŠ›ã™ã‚‹
+            //‚±‚±‚É“ü—Í‚·‚é
             Punch(Player, Enemy);
             Punch(Enemy, Player);
 
             if ((Player.sHP <= 0) || (Enemy.sHP <= 0))
             {
-                //ãƒãƒˆãƒ«çµ‚äº†åˆ¤å®š
+                //ƒoƒgƒ‹I—¹”»’è
                 isPunching = false;
-                Debug.Log("ãƒãƒˆãƒ«çµ‚äº†");
-                if(Enemy.sHP <= 0)
+                Debug.Log("ƒoƒgƒ‹I—¹");
+                if (Enemy.sHP <= 0)
                 {
                     Enemy.sHP = 0;
-                    Debug.Log("æ•µã‚’å€’ã—ã¾ã—ãŸ");
+                    Debug.Log("“G‚ğ“|‚µ‚Ü‚µ‚½");
                 }
             }
             else
             {
-                //Debug.Log("ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æ›´æ–°");
+                //Debug.Log("ƒXƒe[ƒ^ƒXXV");
             }
         }
 
 
-        //ä»¥ä¸‹ã¯æˆ¦é—˜ä¸­ã¯å…¥åŠ›ä¸å¯ã«ã™ã‚‹
+        //ˆÈ‰º‚Íí“¬’†‚Í“ü—Í•s‰Â‚É‚·‚é
 
         float submitKey = Input.GetAxis("Submit");
         float cancelKey = Input.GetAxis("Cancel");
 
         if (submitKey > 0 && (isSubmit == false))
         {
-            //åˆå›å…¥åŠ›
-            Debug.Log("æ±ºå®šã‚­ãƒ¼ã‚’æŠ¼ä¸‹ã—ã¾ã—ãŸ");
+            //‰‰ñ“ü—Í
+            Debug.Log("Œˆ’èƒL[‚ğ‰Ÿ‰º‚µ‚Ü‚µ‚½");
             isSubmit = true;
-            isPunching = true;      //ãƒãƒˆãƒ«é–‹å§‹
+            isPunching = true;      //ƒoƒgƒ‹ŠJn
 
         }
         else if (submitKey > 0 && (isSubmit == true))
         {
-            //ç¶™ç¶šå…¥åŠ›
-            //Debug.Log("æ±ºå®šã‚­ãƒ¼ã‚’æŠ¼ä¸‹ä¸­ã§ã™");
+            //Œp‘±“ü—Í
+            //Debug.Log("Œˆ’èƒL[‚ğ‰Ÿ‰º’†‚Å‚·");
             isSubmit = true;
         }
         else
@@ -259,14 +289,14 @@ public class ButtonPlayer : MonoBehaviour
         }
         if (cancelKey > 0 && (isCancel == false))
         {
-            //åˆå›å…¥åŠ›
-            Debug.Log("ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã‚­ãƒ¼ã‚’æŠ¼ä¸‹ã—ã¾ã—ãŸ");
+            //‰‰ñ“ü—Í
+            Debug.Log("ƒLƒƒƒ“ƒZƒ‹ƒL[‚ğ‰Ÿ‰º‚µ‚Ü‚µ‚½");
             isCancel = true;
         }
         else if (cancelKey > 0 && (isCancel == true))
         {
-            //ç¶™ç¶šå…¥åŠ›
-            //Debug.Log("ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã‚­ãƒ¼ã‚’æŠ¼ä¸‹ä¸­ã§ã™");
+            //Œp‘±“ü—Í
+            //Debug.Log("ƒLƒƒƒ“ƒZƒ‹ƒL[‚ğ‰Ÿ‰º’†‚Å‚·");
             isCancel = true;
         }
         else
@@ -276,7 +306,7 @@ public class ButtonPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// ãƒ€ãƒ¡ãƒ¼ã‚¸ä»˜ä¸å‡¦ç†
+    /// ƒ_ƒ[ƒW•t—^ˆ—
     /// </summary>
     /// <param name="attack"></param>
     /// <param name="defence"></param>
@@ -287,18 +317,18 @@ public class ButtonPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ç”»é¢ã‚’æ›´æ–°ã™ã‚‹
+    /// ƒXƒe[ƒ^ƒX‰æ–Ê‚ğXV‚·‚é
     /// </summary>
     private void UpdateStatus()
     {
         //Debug.Log(PlayerStatus.transform.GetChild(0).GetComponent<Text>().text);
 
-        //Playerã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æ›´æ–°
+        //PlayerƒXƒe[ƒ^ƒXXV
         PlayerStatus.transform.GetChild(0).GetComponent<Text>().text = "HP  :" + Player.sHP;
         PlayerStatus.transform.GetChild(1).GetComponent<Text>().text = "ATK:" + Player.sATK;
         PlayerStatus.transform.GetChild(2).GetComponent<Text>().text = "DEF:" + Player.sDEF;
 
-        //Playerã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æ›´æ–°
+        //PlayerƒXƒe[ƒ^ƒXXV
         EnemyStatus.transform.GetChild(0).GetComponent<Text>().text = "HP  :" + Enemy.sHP;
         EnemyStatus.transform.GetChild(1).GetComponent<Text>().text = "ATK:" + Enemy.sATK;
         EnemyStatus.transform.GetChild(2).GetComponent<Text>().text = "DEF:" + Enemy.sDEF;
